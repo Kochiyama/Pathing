@@ -1,0 +1,10 @@
+<div class="modal hidden">
+  <p id="errContainer">OOPS! {{ error }}</p>
+  <button onclick="hideModal()">X</button>
+</div>
+
+<script>
+  function hideModal() {
+    document.querySelector(".modal").style.display = "none";
+  }
+</script>

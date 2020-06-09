@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathing</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/login.css">
+  <link rel="stylesheet" href="/styles/modal.css">
+</head>
+
+<body>
+  <div class="content">
+    <nav>
+      <h1 id="myLogo">MK</h1>
+    </nav>
+
+    <div class="container">
+      <h1 class="pathingLogo">Pathing</h1>
+
+      <form action="/login" method="POST">
+        <fieldset>
+          <label for="username">Username</label>
+          <input name="username" type="text" placeholder="your username" required>
+
+          <label for="password">Password</label>
+          <input name="password" type="password" placeholder="Your super secure password" required>
+        </fieldset>
+
+        <button type="submit">Login</button>
+        <p>Not registered? <a href="/register">Create Account</a></p>
+      </form>
+    </div>
+  </div>
+  {% if error %}
+    {% include "partials/modal.html" %}
+  {% endif %}
+</body>
+
+</html>
