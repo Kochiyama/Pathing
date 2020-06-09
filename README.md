@@ -11,5 +11,5 @@ Open source Project especially developed for CS50x 2020. This app is a tool for 
 * CSS
 * SQL (Sqlite3)
 
-*** This application is FULL MVC  ***
+***This application is FULL MVC***
 This means  that the back-end and front-end are completely together.
