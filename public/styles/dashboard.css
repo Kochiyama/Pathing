@@ -1,0 +1,137 @@
+.content {
+  padding: 1rem;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: var(--grey-middle);
+}
+
+nav {
+  height: 5vh;
+  width: 95vw;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#myLogo {
+  font-weight: 200;
+  color: var(--highlight-color);
+}
+
+#user {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+#userName {
+  font-size: 0.7rem;
+  margin-right: 1rem;
+  color: var(--grey-middle);
+}
+
+#userImg {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  background-color: var(--grey-middle);
+}
+
+.container {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.path {
+  width: 400px;
+  height: 250px;
+  padding: 1rem;
+
+  border-radius: 0.3rem;
+
+  color: var(--secondary-color);
+  background-color: var(--grey-middle);
+}
+
+.pathHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pathName {
+  font-size: 1.3rem;
+}
+
+.pathImportancy {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 0.3rem;
+  border: none;
+  outline: none;
+
+  background-color: var(--green-color);
+}
+
+.pathImportancy:active {
+  opacity: 0.7;
+}
+
+.pathContent {
+  margin-top: 0.5rem;
+  height: 140px;
+}
+
+.pathFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#pathComplete, #pathDelete {
+  width: 25px;
+  height: 25px;
+  color: var(--grey-darker);
+}
+
+footer {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 2.2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer a {
+  padding: 0.2rem 0.5rem;
+  text-decoration: none;
+  border-radius: 0.3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--grey-middle);
+  background-color: var(--primary-color);
+}
+
+footer a img {
+  width: 25px;
+  height: 25px;
+}
+
+footer a span {
+  font-size: 1.2rem;
+  margin: 0rem 0.5rem;
+}

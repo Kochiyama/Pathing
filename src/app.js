@@ -56,7 +56,7 @@ app.post("/login", (req, res) => {
     state.userId = rows[0].id;
     console.log(state);
 
-    return res.redirect("/dashboard");
+    return res.redirect("/");
   })
 });
 
@@ -115,12 +115,12 @@ app.post("/register", (req, res) => {
 
       state.userId = rows[0];
 
-      return res.redirect("/dashboard");
+      return res.redirect("/");
     })
   });
 });
 
-app.get("/dashboard", (req, res) => {
+app.get("/", (req, res) => {
   if (isLogged() === true) {
     return res.render("dashboard.html");
   }
