@@ -7,6 +7,7 @@
 {% block style %}
   <link rel="stylesheet" href="/styles/dashboard.css">
 {% endblock style %}
+</head>
 
 {% block content %}
   <div class="content">
@@ -20,24 +21,7 @@
     </nav>
 
     <div class="container">
-      {% for i in [1, 2, 3, 4, 5, 6] %}
-      <div class="path">
-        <div class="pathHeader">
-          <h2 class="pathName">Pathing Name</h2>
-          <button class="pathImportancy"></button>
-        </div>
 
-        <p class="pathContent">
-          Pathing description
-        </p>
-
-        <div class="pathFooter">
-          <img id="pathComplete" src="/assets/check-square-solid.svg" alt="complete Path">
-          <p>10/15 completed</p>
-          <img id="pathDelete" src="/assets/trash-solid.svg" alt="Delete Path">
-        </div>
-      </div>
-      {% endfor %}
     </div>
     <footer>
       <a href="/createPath">

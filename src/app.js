@@ -128,4 +128,8 @@ app.get("/", (req, res) => {
   return res.redirect("/login");
 });
 
+app.get("/createPath", (req, res) => {
+  return res.render("createPath.html");
+});
+
 app.listen(3000);
