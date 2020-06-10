@@ -121,15 +121,83 @@ app.post("/register", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  if (isLogged() === true) {
-    return res.render("dashboard.html");
+  if (isLogged() !== true) {
+    return res.redirect("/login");
   }
 
-  return res.redirect("/login");
+  db.all(`
+    SELECT id, title, priority, description, completion FROM paths WHERE user_id = ?;
+  `,
+  [state.userId],
+  (err, rows) => {
+    if (err) {
+      console.log(err);
+    }
+
+    if (rows.length === 0) {
+      return res.render("dashboard.html", { noPaths: true });
+    }
+    console.log(rows);
+    return res.render("dashboard.html", { paths: rows });
+  })
 });
 
 app.get("/createPath", (req, res) => {
+  if (isLogged() !== true) {
+    return res.redirect("/login");
+  }
+
   return res.render("createPath.html");
+});
+
+app.post("/createPath", (req, res) => {
+  if (isLogged() !== true) {
+    return res.redirect("/login");
+  }
+
+  const params = [
+    state.userId,
+    req.body.title,
+    req.body.priority,
+    req.body.description,
+    "0/0"
+  ];
+
+  const sql = `
+    INSERT INTO paths (
+      user_id,
+      title,
+      priority,
+      description,
+      completion
+      ) VALUES (?, ?, ?, ?, ?);
+  `;
+
+  db.run(sql, params, (err) => {
+    if (err) {
+      console.log(err);
+    }
+
+    return res.redirect("/");
+  });
+});
+
+app.get("/path/:pathId", (req, res) => {
+  if (isLogged() !== true) {
+    return res.redirect("/login");
+  }
+
+  db.all(`
+    SELECT * FROM paths WHERE id = ?;
+  `, 
+  [req.params.pathId], 
+  (err, rows) => {
+    if (err) {
+      console.log(err);
+    }
+
+    return res.render("path.html", { path: rows[0] });
+  });
 });
 
 app.listen(3000);

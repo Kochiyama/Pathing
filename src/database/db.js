@@ -21,6 +21,7 @@ db.serialize(() => {
       user_id INTEGER,
       title TEXT,
       priority INTEGER,
+      description TEXT,
       completion TEXT,
       steps TEXT
     );

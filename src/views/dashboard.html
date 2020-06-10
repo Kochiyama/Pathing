@@ -9,40 +9,51 @@
 {% endblock style %}
 
 {% block content %}
-  <div class="content">
-    <nav>
-      <h1 id="myLogo">MK</h1>
-      <a href="#" id="user">
-        <h3 id="userName">Marcelo Kochiyama</h3>
-        <div id="userImg">
-        </div>
-      </a>
-    </nav>
-
-    <div class="container">
-      {% for i in [1, 2, 3, 4, 5, 6] %}
-      <div class="path">
-        <div class="pathHeader">
-          <h2 class="pathName">Pathing Name</h2>
-          <button class="pathImportancy"></button>
-        </div>
-
-        <p class="pathContent">
-          Pathing description
-        </p>
-
-        <div class="pathFooter">
-          <img id="pathComplete" src="/assets/check-square-solid.svg" alt="complete Path">
-          <p>10/15 completed</p>
-          <img id="pathDelete" src="/assets/trash-solid.svg" alt="Delete Path">
-        </div>
+<div class="content">
+  <nav>
+    <h1 id="myLogo">MK</h1>
+    <a href="#" id="user">
+      <h3 id="userName">Marcelo Kochiyama</h3>
+      <div id="userImg">
       </div>
-      {% endfor %}
+    </a>
+  </nav>
+{% if noPaths %}
+<div class="noPaths">
+  <h1>You don't have any pathing yet</h1>
+  <a href="/createPath">
+    <img src="/assets/plus-circle-secondarycolor.svg" alt="">
+    <span>Create Path</span>
+  </a>
+</div>
+
+{% else %}
+  <div class="container">
+    {% for path in paths %}
+    <div class="path" data-id="{{ path.id }}">
+      <div class="pathHeader" data-id="{{ path.id }}">
+        <h2 class="pathName" data-id="{{ path.id }}">{{ path.title }}</h2>
+        <button class="pathImportancy" data-id="{{ path.id }}" data-type="P"></button>
+      </div>
+
+      <p class="pathContent" data-id="{{ path.id }}">{{ path.description }}</p>
+
+      <div class="pathFooter">
+        <img id="pathComplete" src="/assets/check-square-solid.svg" alt="complete Path" data-type="C" data-id="{{ path.id }}">
+        <p data-id="{{ path.id }}">{{ path.completion }} completed</p>
+        <img id="pathDelete" src="/assets/trash-solid.svg" alt="Delete Path"  data-id="{{ path.id }}" data-type="D">
+      </div>
     </div>
-    <footer>
-      <a href="/createPath">
-        <img src="/assets/plus-circle-solid.svg" alt="">
-        <span>Create Path</span>
-      </a>
-    </footer>
+    {% endfor %}
+  </div>
+  <footer>
+    <a href="/createPath">
+      <img src="/assets/plus-circle-solid.svg" alt="">
+      <span>Create Path</span>
+    </a>
+  </footer>
+{% endif %}
+</div>
+
+<script src="/scripts/dashboard.js"></script>
 {% endblock content %}
