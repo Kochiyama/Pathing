@@ -38,7 +38,7 @@ app.post("/login", (req, res) => {
   
   const query = `
     SELECT * FROM users WHERE username = ?;
-  `
+  `;
 
   db.all(query, [username], (err, rows) => {
     if (err) {
