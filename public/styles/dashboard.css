@@ -9,6 +9,8 @@
   color: var(--grey-middle);
 }
 
+/* HEADER */
+
 nav {
   height: 5vh;
   width: 95vw;
@@ -44,19 +46,27 @@ nav {
   background-color: var(--grey-middle);
 }
 
+/* PATHS CARD AREA */
+
 .container {
+  width: 95vw;
   margin-top: 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1.5rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .path {
-  width: 400px;
-  height: 250px;
+  width: 20rem;
+  height: 12.5rem;
   padding: 1rem;
+  margin: 0.5rem;
 
   border-radius: 0.3rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   color: var(--secondary-color);
   background-color: var(--grey-middle);
@@ -69,6 +79,9 @@ nav {
 
 .pathName {
   font-size: 1.3rem;
+  max-height: 2rem;
+  max-width: 85%;
+  word-wrap: break-word;
 }
 
 .pathImportancy {
@@ -86,9 +99,12 @@ nav {
   opacity: 0.7;
 }
 
-.pathContent {
-  margin-top: 0.5rem;
-  height: 140px;
+.pathDescription {
+  flex: 1;
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 200;
+  word-wrap: break-word;
 }
 
 .pathFooter {
@@ -107,20 +123,23 @@ nav {
   opacity: 0.7;
 }
 
+/* footer */
+
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0.5rem;
-  left: 2.2rem;
+  right: 2.2rem;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-footer a {
+footer button {
   padding: 0.2rem 0.5rem;
-  text-decoration: none;
   border-radius: 0.3rem;
+  border: none;
+  outline: none;
 
   display: flex;
   align-items: center;
@@ -130,15 +149,22 @@ footer a {
   background-color: var(--primary-color);
 }
 
-footer a img {
+footer button img {
   width: 25px;
   height: 25px;
 }
 
-footer a span {
+footer button span {
   font-size: 1.2rem;
   margin: 0rem 0.5rem;
 }
+
+footer button:active {
+  opacity: 0.7;
+}
+
+
+/* if no paths are registrated */
 
 .noPaths {
   height: 100%;
@@ -152,12 +178,14 @@ footer a span {
   margin-bottom: 2rem;
 }
 
-.noPaths a {
+.noPaths button {
   width: 50%;
   margin-top: 2rem;
   padding: 0.5rem;
+  
   border-radius: 0.3rem;
-  text-decoration: none;
+  border: none;
+  outline: none;
 
   display: flex;
   align-items: center;
@@ -177,6 +205,6 @@ footer a span {
   font-size: 1.5rem;
 }
 
-.noPaths a:active {
+.noPaths button:active {
   opacity: 0.7;
 }

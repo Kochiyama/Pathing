@@ -60,6 +60,11 @@ app.post("/login", (req, res) => {
   })
 });
 
+app.get("/logout", (req, res) => {
+  state.userId = "";
+  return res.redirect("/login");
+});
+
 app.get("/register", (req, res) => {
   state.userId = "";
   return res.render("register.html");
@@ -137,17 +142,9 @@ app.get("/", (req, res) => {
     if (rows.length === 0) {
       return res.render("dashboard.html", { noPaths: true });
     }
-    console.log(rows);
+    
     return res.render("dashboard.html", { paths: rows });
   })
-});
-
-app.get("/createPath", (req, res) => {
-  if (isLogged() !== true) {
-    return res.redirect("/login");
-  }
-
-  return res.render("createPath.html");
 });
 
 app.post("/createPath", (req, res) => {
@@ -196,8 +193,39 @@ app.get("/path/:pathId", (req, res) => {
       console.log(err);
     }
 
+    const path = rows[0];
+    if (path.steps === null) {
+      return res.render("path.html", { noSteps: true });
+    }
+    console.log(path);
+
     return res.render("path.html", { path: rows[0] });
   });
 });
+
+app.post("/pathDelete", (req, res) => {
+  if (isLogged() !== true) {
+    return res.redirect("/login");
+  }
+
+  const pathID = req.body.pathId;
+  
+  db.run(`
+    DELETE FROM paths WHERE id = ?;
+  `, 
+  [pathID], 
+  (err) => {
+    if (err) {
+      console.log(err);
+    }
+
+    return res.redirect("/");
+  })
+  
+});
+
+app.get("/createStep", (req, res) => {
+  return res.render("createStep.html");
+})
 
 app.listen(3000);

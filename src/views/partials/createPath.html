@@ -1,0 +1,19 @@
+<form class="createPath modal hidden" action="/createPath" method="POST">
+  <button id="closeButton" onclick="toggleHidden('.modal')">X</button>
+  <h1>Create Path</h1>
+
+  <fieldset>
+    <label for="title">Path Title</label>
+    <input name="title" id="inputTitle" type="text" required maxlength="42">
+
+    <div class="fieldgroup">
+      <label for="priority">Priority: <span>unlisted</span></label>
+      <input name="priority" id="inputPriority" type="range" max="2" min="0" value="0">
+    </div>
+
+    <label for="description">Path description</label>
+    <textarea name="description" id="inputDescription" cols="40" rows="5" maxlength="90" placeholder="The description of your pathing, remember to explain why you want to do this." required></textarea>
+  </fieldset>
+
+  <button id="createButton" type="submit">Create</button>
+</form>

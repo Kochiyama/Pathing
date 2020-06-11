@@ -1,0 +1,14 @@
+<form style="display: none;" id="pathDeleteForm" action="/pathDelete" method="POST">
+  <input type="text" name="pathId" id="pathIdContainer">
+</form>
+
+<div class="deletePath modal hidden">
+  <h1>You really want to delete <strong>PERMANENTLY</strong> This path?</h1>
+  <div class="options">
+    <form action="">
+    
+    </form>
+    <button type="submit" form="pathDeleteForm">Yes</button>
+    <button onclick="toggleHidden('.deletePath')">No</button>
+  </div>
+</div>

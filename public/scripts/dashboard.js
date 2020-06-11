@@ -1,12 +1,20 @@
 const paths = document.querySelectorAll(".path");
-const inputHidden = document.querySelector("#data");
+const pathIdContainer = document.querySelector("#pathIdContainer");
+
+
+function toggleHidden(structure) {
+  document
+  .querySelector(structure)
+  .classList.toggle("hidden");
+}
 
 
 function handlePathClick(event) {
-  const pathID = event.target.dataset.id;
+  selectedPathId = event.target.dataset.id;
+  pathIdContainer.value = selectedPathId;
 
-  function redirectForPath(pathID) {
-    window.location = `/path/${pathID}`;
+  function redirectForPath(selectedPathId) {
+    window.location = `/path/${selectedPathId}`;
   }
   
   const clickType = event.target.dataset.type;
@@ -16,7 +24,7 @@ function handlePathClick(event) {
         console.log("Complete path");
         break;
       case "D":
-        console.log("Delete Path");
+        toggleHidden('.deletePath');
         break;
       case "P":
         console.log("Change Priority");
@@ -27,7 +35,7 @@ function handlePathClick(event) {
     return;
   }
 
-  redirectForPath(pathID);
+  redirectForPath(selectedPathId);
 }
 
 for (const path of paths) {

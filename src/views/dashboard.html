@@ -6,54 +6,69 @@
 
 {% block style %}
   <link rel="stylesheet" href="/styles/dashboard.css">
+  <link rel="stylesheet" href="/styles/dashboardModals.css">
 {% endblock style %}
 
 {% block content %}
-<div class="content">
-  <nav>
-    <h1 id="myLogo">MK</h1>
-    <a href="#" id="user">
-      <h3 id="userName">Marcelo Kochiyama</h3>
-      <div id="userImg">
-      </div>
-    </a>
-  </nav>
-{% if noPaths %}
-<div class="noPaths">
-  <h1>You don't have any pathing yet</h1>
-  <a href="/createPath">
-    <img src="/assets/plus-circle-secondarycolor.svg" alt="">
-    <span>Create Path</span>
-  </a>
-</div>
+  <div class="content">
+    <nav>
+      <h1 id="myLogo">MK</h1>
+      <a href="#" id="user">
+        <h3 id="userName">Marcelo Kochiyama</h3>
+        <div id="userImg">
+        </div>
+      </a>
+    </nav>
 
-{% else %}
-  <div class="container">
-    {% for path in paths %}
-    <div class="path" data-id="{{ path.id }}">
-      <div class="pathHeader" data-id="{{ path.id }}">
-        <h2 class="pathName" data-id="{{ path.id }}">{{ path.title }}</h2>
-        <button class="pathImportancy" data-id="{{ path.id }}" data-type="P"></button>
-      </div>
+  {% if noPaths %}
 
-      <p class="pathContent" data-id="{{ path.id }}">{{ path.description }}</p>
-
-      <div class="pathFooter">
-        <img id="pathComplete" src="/assets/check-square-solid.svg" alt="complete Path" data-type="C" data-id="{{ path.id }}">
-        <p data-id="{{ path.id }}">{{ path.completion }} completed</p>
-        <img id="pathDelete" src="/assets/trash-solid.svg" alt="Delete Path"  data-id="{{ path.id }}" data-type="D">
-      </div>
+    <div class="noPaths">
+      <h1>You don't have any pathing yet</h1>
+      <button onclick="toggleHidden('.modal')">
+        <img src="/assets/plus-circle-secondarycolor.svg" alt="">
+        <span>Create Path</span>
+      </button>
     </div>
-    {% endfor %}
-  </div>
-  <footer>
-    <a href="/createPath">
-      <img src="/assets/plus-circle-solid.svg" alt="">
-      <span>Create Path</span>
-    </a>
-  </footer>
-{% endif %}
-</div>
 
-<script src="/scripts/dashboard.js"></script>
+  {% else %}
+
+    <div class="container">
+
+    {% for path in paths %}
+      <div class="path" data-id="{{ path.id }}">
+        <div class="pathHeader" data-id="{{ path.id }}">
+          <h2 class="pathName" data-id="{{ path.id }}">{{ path.title }}</h2>
+          <button class="pathImportancy" data-id="{{ path.id }}" data-type="P"></button>
+        </div>
+
+        <h3 class="pathDescription" data-id="{{ path.id }}">
+          {{ path.description }}
+        </h3>
+
+        <div class="pathFooter">
+          <p data-id="{{ path.id }}">{{ path.completion }} completed</p>
+          <img id="pathDelete" src="/assets/trash-solid.svg" alt="Delete Path"  data-id="{{ path.id }}" data-type="D">
+        </div>
+      </div>
+    {% endfor %}
+
+    </div>
+    <footer>
+      <button onclick="toggleHidden('.modal')">
+        <img src="/assets/plus-circle-solid.svg" alt="">
+        <span>Create Path</span>
+      </button>
+    </footer>
+
+  {% endif %}
+  </div>
 {% endblock content %}
+
+{% block modal %}
+  {% include 'partials/createPath.html' %}
+  {% include 'partials/deletePath.html' %}
+{% endblock %}
+
+{% block scripts %}
+<script src="/scripts/dashboard.js"></script>
+{% endblock %}

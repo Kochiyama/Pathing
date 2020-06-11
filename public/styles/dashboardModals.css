@@ -1,0 +1,188 @@
+/* general modals style */
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--grey-middle);
+  background-color: #1D1C2Aee;
+
+  transition: ease 300ms;
+}
+
+form button:active {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+/* create path modal */
+
+#closeButton {
+  padding: 1rem;
+  margin-right: 5rem;
+  font-size: 1rem;
+
+  border: none;
+  outline: none;
+
+  align-self: flex-end;
+
+  color: var(--grey-color);
+  background: none;
+}
+
+.cratePath h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.createPath fieldset {
+  width: 25rem;
+  padding: 1rem;
+  margin: 2rem;
+
+  border: none;
+  border-radius: 0.3rem;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--primary-color);
+}
+
+.createPath fieldset label {
+  font-size: 1rem;
+}
+
+#inputTitle {
+  padding: 0.2rem 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 0.3rem;
+  outline: none;
+  font-size: 0.8rem;
+}
+
+.fieldgroup {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+#inputPriority {
+  -webkit-appearance: none;
+  width: 50%;
+
+  border: none;
+  border-radius: 1rem;
+  outline: none;
+
+  font-size: 0.8rem;
+  background-color: var(--secondary-color);
+}
+
+#inputPriority::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--highlight-color);
+  cursor: pointer;
+}
+
+#inputPriority:focus {
+  outline: none;
+}
+
+#inputPriority::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+#inputDescription {
+  width: 100%;
+  padding: 0.5rem;
+
+  outline: none;
+  border-radius: 0.3rem;
+  resize: none;
+
+  font-size: 0.7rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+#createButton {
+  width: 40%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  outline: none;
+  color: var(--secondary-color);
+  background-color: var(--highlight-color);
+}
+
+/* delete path */
+
+.deletePath {
+  width: 100vw;
+  height: 100vh;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--grey-middle);
+  background-color: #1D1C2Aee;
+
+}
+
+.deletePath h1 strong {
+  color: var(--red-color);
+}
+
+.deletePath .options {
+  display: flex;
+}
+
+.deletePath button {
+  font-size: 1rem;
+  margin: 1rem;
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+  color: var(--grey-middle);
+  background-color: var(--red-color);
+}
+
+.deletePath button + button {
+  background-color: var(--green-color);
+}
+
+/* hidden implementation */
+
+.hidden {
+  display: none;
+}
